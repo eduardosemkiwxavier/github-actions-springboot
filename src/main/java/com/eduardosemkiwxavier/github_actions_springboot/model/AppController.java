@@ -8,7 +8,7 @@ public class AppController {
 
     @GetMapping
     public String teste(){
-        return "Testando github actions!";
+        return "Testando github actions! 123";
     }
 
 }
