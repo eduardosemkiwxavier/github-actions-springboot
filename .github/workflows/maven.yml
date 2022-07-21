@@ -25,5 +25,5 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Teste
-      run: echo testando github actions; ls -la
+      run: ls -la /target
       
