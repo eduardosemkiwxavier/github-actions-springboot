@@ -26,4 +26,5 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Teste
       run: pwd
+           ls -la
       
