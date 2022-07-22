@@ -44,5 +44,5 @@ jobs:
         port: 22
         script: |
           whoami
-          systemctl restart apiprod.service
+          sudo systemctl restart apiprod.service
         
