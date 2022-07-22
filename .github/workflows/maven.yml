@@ -22,27 +22,22 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    - name: Teste
-      run: ls -la target/
-    - name: copy file via ssh password
+    - name: Fazendo o build
+      run: mvn clean package -DskipTests=true -Djar.finalName=api-prod
+    - name: Fazendo upload do jar
       uses: appleboy/scp-action@master
       with:
         host: 168.228.237.114
         username: hospedagem02
         password: Jkmudar@123
         port: 22
-        source: "/home/runner/work/github-actions-springboot/github-actions-springboot/target/github_actions_springboot-0.0.1-SNAPSHOT.jar"
+        source: "/home/runner/work/github-actions-springboot/github-actions-springboot/target/api-prod.jar"
         target: "/home/hospedagem02"
-    - name: executing remote ssh commands using password
+    - name: Restartando a api
       uses: appleboy/ssh-action@master
       with:
         host: 168.228.237.114
         username: hospedagem02
         password: Jkmudar@123
         port: 22
-        script: |
-          whoami
-          sudo systemctl restart apiprod.service
-        
+        script: sudo systemctl restart apiprod.service
