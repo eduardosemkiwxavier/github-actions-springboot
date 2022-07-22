@@ -35,4 +35,14 @@ jobs:
         port: 22
         source: "/home/runner/work/github-actions-springboot/github-actions-springboot/target/github_actions_springboot-0.0.1-SNAPSHOT.jar"
         target: "/home/hospedagem02"
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: 168.228.237.114
+        username: hospedagem02
+        password: Jkmudar@123
+        port: 22
+        script: |
+          whoami
+          systemctl restart apiprod.service
         
