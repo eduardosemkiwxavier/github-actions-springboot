@@ -23,7 +23,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Fazendo o build
-      run: mvn clean package -DskipTests=true -Djar.finalName=api-prod
+      run: mvn clean package -DskipTests=true
     - name: Fazendo upload do jar
       uses: appleboy/scp-action@master
       with:
@@ -31,7 +31,7 @@ jobs:
         username: hospedagem02
         password: Jkmudar@123
         port: 22
-        source: "/home/runner/work/github-actions-springboot/github-actions-springboot/target/api-prod.jar"
+        source: "/home/runner/work/github-actions-springboot/github-actions-springboot/target/github_actions_springboot-0.0.1-SNAPSHOT.jar"
         target: "/home/hospedagem02"
     - name: Restartando a api
       uses: appleboy/ssh-action@master
